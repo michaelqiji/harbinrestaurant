@@ -1,0 +1,79 @@
+<!-- <div class="backgroundimage"></div> -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/cart.css">
+<h2 style="text-align: center">Cart(Order for pick up)</h2>
+
+<table align="center">
+    <tr>
+        <th>Code</th>
+        <th>Dish Title</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+
+    <tr ng-repeat="item in shoppingcart">
+        <td>{{item.code}}</td>
+        <td>{{item.title}}/{{item.chinese}}</td>
+        <td>{{item.price}}</td>
+        <td>
+            <input type="number" name="quantity" ng-model="calQuantity[item.code]" style="width:60px;height:6px;border: 2px;border-radius: 10px;">
+        </td>
+        <td>{{item.price * calQuantity[item.code]}}</td>
+    </tr>
+
+    <tr ng-show="shoppingcart.length > 0">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr ng-show="shoppingcart.length > 0">
+        <td>Sum</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{(getTotal() * 1).toFixed(2)}}</td>
+    </tr>
+
+    <tr ng-show="shoppingcart.length > 0">
+        <td>Online order 5% Off</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>-{{(getTotal() * 0.05).toFixed(2)}}</td>
+    </tr>
+
+    <tr ng-show="shoppingcart.length > 0">
+        <td>Tax</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{(getTotal() * 0.95 * 0.13).toFixed(2)}}</td>
+    </tr>
+
+    <tr ng-show="shoppingcart.length > 0">
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{(getTotal() * 0.95 * 1.13).toFixed(2)}}</td>
+    </tr>
+</table>
+
+<hr>
+<div class="container" z-index="2">
+    Name: <input type="text" name="name" ng-model="orderName">
+    <br>
+    Phone Number:<input type="text" name="phonenumber" ng-model="contact">
+    <br>
+    Time: <input type="checkbox" name="orderNow" style="width: 15px;height: 15px;"> Now <input type="checkbox" name="orderNow" style="width: 15px;height: 15px;"> Future
+    <input type="Time" name="futureTime" ng-model="futureTime">
+    <br>
+    Special Requirement:<input type="text" name="requirement" ng-model="requirement">
+    <br>
+    <button type="button" class="btn btn-primary" id="sendBtn" style="width: 100%;" ng-click="sendorder()">Send Order</button>
+</div>
+
+

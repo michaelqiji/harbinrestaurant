@@ -1,0 +1,325 @@
+<!-- <div class="backgroundimage"></div> -->
+<style>
+.nopadding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.dropdown-menu {
+  position: relative !important;
+}
+</style>
+<ul class="nav nav-tabs nav-justified" id="myTab">
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#lunch" target="_blank" style="font-size: 18px;color: red;font-family:'Comic Sans MS'">All Day</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#dinner" target="_blank" style="font-size: 18px;color: red;font-family:'Comic Sans MS'">After 3pm</a>
+  </li>
+</ul>
+<div class="tab-content" style="margin: 10px;">
+  <div class="tab-pane fade in active" id="lunch"> 
+    <div class="col-sm-4">
+      <h2>Casserole/砂锅</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="pot in pots">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{pot.value.code}}. {{pot.value.chinese}}</span><br>
+            <span>{{pot.value.title}}</span>
+          </div>
+          <!-- <span class="w3-right w3-bar-item"><button type="button" class="btn btn-success btn-xs pull-right">Add</button></span> -->
+
+          <div class="dropdown" z-index="2">
+            <button class="btn btn-success btn-xs dropdown-toggle pull-right" type="button" data-toggle="dropdown">Add
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>Combo: Casserole + Rice + Stew Pork Belly in Pot or Cold Dishes<span class="pull-right">14.99<button class="btn btn-success btn-xs" ng-click="addCasserole(pot.value, 'A' , 'Casserole Combo', 14.99)">Add</button></span></li>
+              <li>Regular: Casserole (Regular)<span class="pull-right">11.99<button class="btn btn-success btn-xs" ng-click="addCasserole(pot.value, 'B', 'Casserole Regular', 11.99)">Add</button></span></li>
+              <li>Large: Casserole (Large)<span class="pull-right">16.99<button class="btn btn-success btn-xs" ng-click="addCasserole(pot.value, 'B+', 'Casserole Large', 16.99)">Add</button></span></li>
+            </ul>
+          </div>
+        </li>
+
+<!--           <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>Combo with asdfasfajl;<button>Send</button></li>
+              <li>asdf;akdflask<button>Send</button></li>
+              <li>a;lmkckdsj<button>Send</button></li>
+            </ul>
+          </div> -->
+<!--         <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">A. Casserole + Rice + Stew Pork Belly in Pot or Cold Dishes</span><br>
+            <span>砂锅+米饭+坛肉/拌菜</span>
+          </div>
+          <span class="w3-right w3-bar-item">14.99<button type="button" class="btn btn-success btn-xs pull-right">Add</button></span>
+        </li>
+
+        <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">B. Casserole (Regular)</span><br>
+            <span>砂锅(小)</span>
+          </div>
+          <span class="w3-right w3-bar-item">11.99<button type="button" class="btn btn-success btn-xs pull-right">Add</button></span>
+        </li>
+
+        <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">B+. Casserole (Large)</span><br>
+            <span>砂锅(大)</span>
+          </div>
+          <span class="w3-right w3-bar-item">16.99<button type="button" class="btn btn-success btn-xs pull-right">Add</button></span>
+        </li>
+
+        <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">C. Pork Belly in Pot</span><br>
+            <span>坛肉</span>
+          </div>
+          <span class="w3-right w3-bar-item">4.99<button type="button" class="btn btn-success btn-xs pull-right">Add</button></span>
+        </li>
+
+        <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">D. Cold Dishes(Change everyday, please ask waitress)</span><br>
+            <span>拌菜（每天轮换，请咨询服务员）</span>
+          </div>
+          <span class="w3-right w3-bar-item">4.99<button type="button" class="btn btn-success btn-xs pull-right">Add</button></span>
+        </li> -->
+      </ul>
+    </div>
+
+    <div class="col-sm-4">
+      <h2>Fried Rice/Noodles/炒饭</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="chaofan in chaofans">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{chaofan.value.code}}. {{chaofan.value.chinese}}</span><br>
+            <span>{{chaofan.value.title}}</span>
+          </div>
+          <span class="w3-right w3-bar-item">{{chaofan.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(chaofan.value)">Add</button></span>
+        </li>
+        <li class="w3-bar w3-white">Serve with a spring roll or a sesame ball.</li>
+      </ul>
+      <br>
+      <h2>Stir-Frieds with Rice/盖饭</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="gaifan in gaifans">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{gaifan.value.code}}. {{gaifan.value.chinese}}</span><br>
+            <span>{{gaifan.value.title}}</span>
+          </div>
+          <span class="w3-right w3-bar-item">{{gaifan.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(gaifan.value)">Add</button></span>
+        </li>
+        <li class="w3-bar w3-white">Serve with a spring roll or a sesame ball.</li>
+      </ul>
+
+<!--       <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="combo in combos">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{combo.value.code}}. {{combo.value.chinese}}</span><br>
+            <span>{{combo.value.title}}</span>
+          </div>
+          <span class="w3-right w3-bar-item">{{combo.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(combo.value)">Add</button></span>
+        </li>
+      </ul> -->
+    </div>
+
+    <div class="col-sm-4">
+      <h2>Combo/盒饭</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">E.Combo(Choose two dishes and spring rolls or sesame balls)</span><br>
+            <span>盒饭(任选两菜 + 春卷/麻团)</span>
+          </div>
+          <span class="w3-right w3-bar-item">14.99<button type="button" class="btn btn-success btn-xs pull-right" data-toggle="modal" data-target="#combobox">Add</button></span>
+        </li>
+        <li class="w3-bar w3-white" ng-repeat="orderedCombo in orderedCombos">
+          Combo{{$index + 1}}: {{orderedCombo.combo1}} + {{orderedCombo.combo2}} + {{orderedCombo.side}}
+        </li>
+<!--         <template>
+          <li class="w3-bar w3-white">
+            <span>First Dish: </span>
+            <select ng-model="firstDish">
+              <option ng-repeat="combo in combos">            
+                <span class="w3-large">{{combo.value.code}}.{{combo.value.chinese}}</span><br>
+                <span>{{combo.value.title}}</span>
+              </option>
+            </select>
+            <hr>
+            <span>Second Dish: </span>
+            <select ng-model="secondDish">
+              <option ng-repeat="combo in combos">            
+                <span class="w3-large">{{combo.value.code}}.{{combo.value.chinese}}</span><br>
+                <span>{{combo.value.title}}</span>
+              </option>
+            </select>
+
+            <hr>
+            <input type="checkbox" name="springroll" ng-model="springroll">Spring Roll
+            <input type="checkbox" name="sesameball" ng-model="sesameball">Sesame Ball
+          </li>
+        </template> -->
+      </ul>
+      <br>
+      <h2>Staple Food/主食</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="zhushi in zhushis">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{zhushi.value.code}}. {{zhushi.value.chinese}}</span><br>
+            <span>{{zhushi.value.title}}</span>
+          </div>
+          <span class="w3-right w3-bar-item">{{zhushi.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(zhushi.value)">Add</button></span>
+        </li>
+      </ul>
+<!--       <h2>Fried Rice/Noodles/炒饭</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="chaofan in chaofans">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{chaofan.value.code}}. {{chaofan.value.chinese}}</span><br>
+            <span>{{chaofan.value.title}}</span>
+          </div>
+          <span class="w3-right w3-bar-item">{{chaofan.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(chaofan.value)">Add</button></span>
+        </li>
+        <li class="w3-bar w3-white">Serve with a spring roll or a sesame ball.</li>
+      </ul>
+      <br>
+      <h2>Stir-Frieds with Rice/盖饭</h2>
+      <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white" ng-repeat="gaifan in gaifans">
+          <div class="w3-bar-item">
+            <span class="w3-large">{{gaifan.value.code}}. {{gaifan.value.chinese}}</span><br>
+            <span>{{gaifan.value.title}}</span>
+          </div>
+          <span class="w3-right w3-bar-item">{{gaifan.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(gaifan.value)">Add</button></span>
+        </li>
+        <li class="w3-bar w3-white">Serve with a spring roll or a sesame ball.</li>
+      </ul> -->
+<!--       <ul class="w3-ul w3-card-4">
+        <li class="w3-bar w3-white">
+          <div class="w3-bar-item">
+            <span class="w3-large">E.Combo(Choose two dishes and spring rolls or sesame balls)</span><br>
+            <span>盒饭(任选两菜 + 春卷/麻团)</span>
+          </div>
+          <span class="w3-right w3-bar-item">14.99<button type="button" class="btn btn-success btn-xs pull-right">Add</button></span>
+        </li>
+      </ul> -->
+    </div>
+  </div>
+  <div class="tab-pane fade" id="dinner">
+    <div class="col-sm-3 nopadding">
+      <div class="w3-container">
+        <h3>Chef's Recommands</h3>
+        <ul class="w3-ul w3-card-4">
+          <li class="w3-bar w3-white" ng-repeat="chef in chefs">
+            <div class="w3-bar-item">
+              <span class="w3-large">{{chef.value.code}}. {{chef.value.chinese}}</span><br>
+              <span>{{chef.value.title}}</span>
+            </div>
+            <span class="w3-right w3-bar-item">{{chef.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(chef.value)">Add</button></span>
+          </li>
+        </ul>
+
+        <br>
+        <h3>Colddish</h3>
+        <ul class="w3-ul w3-card-4">
+          <li class="w3-bar w3-white" ng-repeat="colddish in colddishes">
+            <div class="w3-bar-item">
+              <span class="w3-large">{{colddish.value.code}}. {{colddish.value.chinese}}</span><br>
+              <span>{{colddish.value.title}}</span>
+            </div>
+            <span class="w3-right w3-bar-item">{{colddish.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(colddish.value)">Add</button></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-3 nopadding">
+      <div class="w3-container">
+        <h3>Northeastern Cuisine</h3>
+        <ul class="w3-ul w3-card-4">
+          <li class="w3-bar w3-white" ng-repeat="northeast in northeasts">
+            <div class="w3-bar-item">
+              <span class="w3-large">{{northeast.value.code}}. {{northeast.value.chinese}}</span><br>
+              <span>{{northeast.value.title}}</span>
+            </div>
+            <span class="w3-right w3-bar-item">{{northeast.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(northeast.value)">Add</button></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-3 nopadding">
+      <div class="w3-container">
+        <h3>Sichuan Cuisine</h3>
+        <ul class="w3-ul w3-card-4">
+          <li class="w3-bar w3-white" ng-repeat="chuan in chuans">
+            <div class="w3-bar-item">
+              <span class="w3-large">{{chuan.value.code}}. {{chuan.value.chinese}}</span><br>
+              <span>{{chuan.value.title}}</span>
+            </div>
+            <span class="w3-right w3-bar-item">{{chuan.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(chuan.value)">Add</button></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-3 nopadding">
+      <div class="w3-container">
+        <h3>Home Special</h3>
+        <ul class="w3-ul w3-card-4">
+          <li class="w3-bar w3-white" ng-repeat="home in homes">
+            <div class="w3-bar-item">
+              <span class="w3-large">{{home.value.code}}. {{home.value.chinese}}</span><br>
+              <span>{{home.value.title}}</span>
+            </div>
+            <span class="w3-right w3-bar-item">{{home.value.price}}<button type="button" class="btn btn-success btn-xs pull-right" ng-click="addItemToCart(home.value)">Add</button></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="modal fade" id="combobox" tabindex="-1" role="dialog">
+    <div class="modal-dialog modalCenter">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Combo{{orderedCombos.length + 1}}</h4>
+            </div>
+            <div class="modal-body">
+              <span>First Dish: </span>
+              <select ng-model="firstDish">
+                <option ng-repeat="combo in combos">            
+                  <span class="w3-large">{{combo.value.code}}.{{combo.value.chinese}}</span><br>
+                  <span>{{combo.value.title}}</span>
+                </option>
+              </select>
+              <hr>
+              <span>Second Dish: </span>
+              <select ng-model="secondDish">
+                <option ng-repeat="combo in combos">            
+                  <span class="w3-large">{{combo.value.code}}.{{combo.value.chinese}}</span><br>
+                  <span>{{combo.value.title}}</span>
+                </option>
+              </select>
+
+              <hr>
+              <input type="checkbox" id="springroll" ng-model="springroll"/> <i>Spring Roll</i>
+              <input type="checkbox" id="sesameball" ng-model="sesameball"/> <i>Sesame Ball</i>              
+<!--               <input type="checkbox" name="springroll" ng-model="springroll"><span>Spring Roll</span>
+              <input type="checkbox" name="sesameball" ng-model="sesameball"><span>Sesame Ball</span> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" title="Close dialog." class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" title="Save&Add" class="btn btn-success" ng-click="saveandadd()" data-dismiss="modal">Save&Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

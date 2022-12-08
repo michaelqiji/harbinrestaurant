@@ -1,0 +1,51 @@
+.form ul {
+    background: white;
+    margin-bottom: 1em;
+}
+
+.form li {
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.form li:first-child {
+    border-top: 0;
+}
+
+.form li:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style the input fields as big block-level elements in the form. */
+
+label, input, textarea{
+    /*display: block;*/
+    border: 0;
+}
+
+input, textarea, select {
+    width: 100%;
+    height: 100%;
+    padding: 1em 1em 1em;
+    outline: 0;
+}
+
+textarea {
+    height: 16em;
+    resize: none;
+}
+
+/* Then style the form <label> elements to sit positioned about one-third of the way from the top of each input block. */
+
+label {
+    font-size: .8125em; /* 13/16 */
+    position: absolute;
+    top: 1.23em;
+    left: 1.23em;
+    color: #f1773b;
+    opacity: 1;
+    -webkit-transition: .333s ease top, .333s ease opacity;
+    transition: .333s ease top, .333s ease opacity;
+}

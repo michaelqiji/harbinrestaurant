@@ -1,0 +1,38 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/contact.css">
+ 
+<div class="container1">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Group order, company partnership, or any other inquiries, please let us know.</p>
+  </div>
+  <div class="row">
+    <div class="column">
+<!--       <div id="map" style="width:100%;height:500px"></div> -->
+      <h4>Information</h4>
+      <p>Tel: 6136931525</p>
+      <p>Email: harbinkanata@gmail.com</p>
+      <p>Address: 591 March Rd, Kanata, K2K 2M5</p>
+      <hr>
+      <h4>Opening Hours</h4>
+      <p>Mon: Closed</p>
+      <p>Tue: 11:00am - 9:00pm</p>
+      <p>Wed: 11:00am - 9:00pm</p>
+      <p>Thu: 11:00am - 9:00pm</p>
+      <p>Fri: 11:00am - 9:00pm</p>
+      <p>Sat: 12:00pm - 9:00pm</p>
+      <p>Sun: 12:00pm - 9:00pm</p>
+      <p>Last call is 8:30pm</p>
+    </div>
+    <div class="column">
+      <form>
+        <label>Name</label>
+        <input type="text" id="name" ng-model="name" placeholder="Your name..">
+        <label>Email/Phone Number</label>
+        <input type="text" id="contact" ng-model="contact" placeholder="Your contact..">
+        <label>Subject</label>
+        <textarea id="subject" ng-model="message" placeholder="Write something.." style="height:170px"></textarea>
+        <button class="btn btn-success pull-right" ng-click="submitFunc()">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

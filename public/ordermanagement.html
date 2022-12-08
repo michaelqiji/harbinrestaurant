@@ -1,0 +1,60 @@
+<h1 style="text-align: center">Orders</h1>
+
+<table align="center">
+    <tr>
+        <th>Order</th>
+        <th>Time</th>
+        <th>Contact</th>
+        <th>Total</th>
+        <th>Requirement</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr ng-repeat="order in orders">
+        <td>{{order.value.orderInfo}}</td>
+        <td>{{order.value.time}}</td>
+        <td>{{order.value.contact}}</td>
+        <td>{{order.value.total}}</td>
+        <td>{{order.value.requirement}}</td>
+        <td>{{order.value.status}}</td>
+        <td>
+          <span ng-if="order.value.status == 'pending'"><button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#replyOrder" ng-click="acceptOrderBtn(order.value)">Accept</button></span>
+        	<span ng-if="order.value.status != 'pending'"><button class="btn btn-success btn-xs" data-toggle="modal" data-target="#replyOrder" ng-click="acceptOrderBtn(order.value)">View</button></span>
+        </td>
+    </tr>
+</table>
+
+<div class="modal fade" id="replyOrder" tabindex="-1" role="dialog">
+    <div class="modal-dialog modalCenter">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Reply Customer</h4>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li ng-repeat="item in orderDetail">
+                  {{item.code}}. {{item.chinese}}  * {{codeQuantity[item.code]}}
+                </li>
+              </ul>
+
+              <p>Requirement: {{selectedBuilding.requirement}}</p>
+              <p>Contact: {{selectedBuilding.contact}}</p>
+              <br>
+              <p>
+                Ready In Minutes: <input type="number" name="readyInMinute" ng-model="readyInMinute">
+              </p>
+              <p>
+                Reply Message: 
+                <p><textarea name="message" ng-model="replyMessage" style="width: 100%"></textarea></p>
+              </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" title="Close dialog." class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button ng-show="selectedBuilding.status == 'pending'" type="button" title="Reply." class="btn btn-success" ng-click="replyFunc()" data-dismiss="modal">Accept&Reply</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
